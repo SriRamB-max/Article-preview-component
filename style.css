@@ -1,0 +1,244 @@
+@font-face {
+  font-family: "Manrope";
+  src: local("Manrope"),
+    url("fonts/Manrope-VariableFont_wght.ttf") format("truetype");
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-inline-size: 100%;
+  display: block;
+}
+
+:root {
+  --grey-900: hsl(217, 19%, 35%);
+  --grey-500: hsl(214, 17%, 51%);
+  --grey-400: hsl(212, 23%, 69%);
+  --grey-200: hsl(210, 46%, 95%);
+  --font-base: "Manrope", sans-serif;
+  --weight-regular: 500;
+  --weight-bold: 700;
+  --font-step-1: 0.8125rem;
+  --font-step-2: 1.25rem;
+  --space-0: 0.5rem;
+  --space-1: 1rem;
+  --space-2: 1.5rem;
+  --space-3: 2rem;
+  --space-4: 2.5rem;
+  --space-5: 3rem;
+  --fluid-608-730: clamp(38rem, 29.2857rem + 18.1548vw, 45.625rem);
+  --fluid-0-8: clamp(0rem, -0.5714rem + 1.1905vw, 0.5rem);
+  --fluid-32-40: clamp(2rem, 1.4286rem + 1.1905vw, 2.5rem);
+}
+
+body {
+  font-family: var(--font-base);
+  font-weight: var(--weight-regular);
+  background-color: var(--grey-200);
+  height: 100dvh;
+}
+
+main {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+h1 {
+  line-height: 1.3;
+  font-size: var(--font-step-2);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.019ch;
+  color: var(--grey-900);
+}
+
+p {
+  font-size: var(--font-step-1);
+  line-height: 1.4;
+}
+
+h1 + * {
+  margin-block-start: var(--space-2);
+}
+
+.card {
+  border-radius: 10px;
+  max-width: 20.4375rem;
+  background-color: white;
+  box-shadow: 0 40px 40px -10px #c9d5e1;
+  position: relative;
+}
+
+.card header + * {
+  margin-block-start: var(--space-3);
+}
+
+.card header {
+  overflow: hidden;
+  height: 12.5rem;
+  border-radius: 10px 10px 0px 0px;
+}
+.card header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.card-body p {
+  color: var(--grey-500);
+}
+
+.card footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-block-start: var(--space-5);
+}
+
+.wrapper {
+  padding-inline: var(--space-3);
+  padding-block-end: 1.125rem;
+}
+
+.share-links {
+  background-color: var(--grey-900);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-1);
+  position: absolute;
+  bottom: 0;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.share-links p {
+  text-transform: uppercase;
+  letter-spacing: 0.25ch;
+  margin-inline-end: var(--space-0);
+  color: var(--grey-400);
+  pointer-events: none;
+}
+
+.share-links a {
+  outline-color: var(--grey-900);
+  transition: all 100ms ease-in-out;
+}
+
+.share-links a:hover {
+  filter: drop-shadow(0px 0px 5px var(--grey-200));
+  transform: scale(1.2);
+}
+
+.hidden {
+  display: none;
+}
+
+.share-btn {
+  border-radius: 50%;
+  height: var(--space-3);
+  width: var(--space-3);
+  background-color: var(--share-btn-bg-color, var(--grey-200));
+  border: none;
+  z-index: 1;
+  transition: all 200ms ease-in-out;
+  outline-color: var(--grey-900);
+}
+
+.share-btn:hover {
+  filter: opacity(70%);
+}
+
+.share-btn-dark {
+  --share-btn-bg-color: var(--grey-500);
+  --share-btn-color: brightness(0) invert(1);
+}
+
+.share-btn img {
+  filter: var(--share-btn-color, unset);
+  margin: auto;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.profile img {
+  border-radius: 100%;
+  height: var(--space-4);
+}
+
+.profile p:first-of-type {
+  font-weight: var(--weight-bold);
+  color: var(--grey-900);
+}
+.profile p:last-of-type {
+  color: var(--grey-400);
+}
+
+@media (min-width: 48em) {
+  .card {
+    display: grid;
+    grid-template-columns: 38% 1fr;
+    max-width: unset;
+    max-width: var(--fluid-608-730);
+    gap: var(--fluid-0-8);
+  }
+
+  .card header {
+    height: auto;
+    border-radius: 10px 0px 0px 10px;
+  }
+
+  .wrapper {
+    padding-block-end: var(--space-3);
+    padding-inline: var(--fluid-32-40);
+  }
+
+  .card footer {
+    margin-block-start: var(--space-2);
+    align-items: center;
+  }
+
+  .share-links {
+    inline-size: 15.5rem;
+    block-size: 3.4375rem;
+    border-radius: 10px;
+    justify-content: center;
+    right: -4.6875rem;
+    bottom: 5.625rem;
+    z-index: 2;
+  }
+  .share-links:before {
+    content: "";
+    position: absolute;
+    block-size: 1.0625rem;
+    inline-size: 1.0625rem;
+    background-color: var(--grey-900);
+    top: 3.4375rem;
+    transform: rotateZ(45deg);
+  }
+}
+
+@media (min-width: 64em) {
+  .card header img {
+    object-position: 0% center;
+  }
+}
